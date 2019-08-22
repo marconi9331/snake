@@ -93,12 +93,19 @@ namespace snake
             {
                 this.headX = destX;
                 this.headY = destY;
+
+                if (nextBlock == Program.FOOD)
+                    this.length++;
+
                 this.segmentsCoords.Enqueue(new Coords(this.headX, this.headY));
 
                 this.arena.Setblock(this.headX, this.headY, this.blockChar);
 
-                Coords tailCoords = this.segmentsCoords.Dequeue();
-                this.arena.Setblock(tailCoords.x, tailCoords.y, Program.EMPTY);
+                if (this.segmentsCoords.Count > this.length)
+                {
+                    Coords tailCoords = this.segmentsCoords.Dequeue();
+                    this.arena.Setblock(tailCoords.x, tailCoords.y, Program.EMPTY);
+                }
             }
         }
     }
