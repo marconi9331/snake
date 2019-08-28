@@ -4,11 +4,13 @@ using System.Text;
 
 namespace snake
 {
-    class Arena
-    {
+    public sealed class Arena
+    {        
         private int sizeX;
         private int sizeY;
         private char[,] blocks;
+
+        
 
         public Arena(int sizeX, int sizeY)
         {

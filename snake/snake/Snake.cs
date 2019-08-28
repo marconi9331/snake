@@ -19,6 +19,10 @@ namespace snake
         private Queue<Coords> segmentsCoords;
         private bool isAlive;
 
+        public bool IsAlive { get => isAlive;}
+
+
+
         // Construtor
         public Snake(Arena arena, int x, int y, char blockChar, ConsoleKey upKey, ConsoleKey downKey, ConsoleKey leftKey, ConsoleKey rightKey)
         {
@@ -45,16 +49,16 @@ namespace snake
 
         public void OnKeyPressed(ConsoleKey key)
         {
-            if (key == this.upKey)
+            if (key == this.upKey && this.moveDir != Direction.DOWN)
                 this.moveDir = Direction.UP;
 
-            else if (key == this.downKey)
+            else if (key == this.downKey && this.moveDir != Direction.UP)
                 this.moveDir = Direction.DOWN;
 
-            else if (key == this.leftKey)
+            else if (key == this.leftKey && this.moveDir != Direction.RIGHT)
                 this.moveDir = Direction.LEFT;
 
-            else if (key == this.rightKey)
+            else if (key == this.rightKey && this.moveDir != Direction.LEFT)
                 this.moveDir = Direction.RIGHT;
         }
 
